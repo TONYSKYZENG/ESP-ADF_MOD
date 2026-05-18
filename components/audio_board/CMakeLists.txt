@@ -123,7 +123,22 @@ set(COMPONENT_SRCS
 ./m5stack_atoms3r/board_pins_config.c
 )
 endif()
-
+if (CONFIG_TANK_SOUND_MINI_BOARD)
+message(STATUS "Current board name is " CONFIG_TANK_SOUND_MINI_BOARD)
+list(APPEND COMPONENT_ADD_INCLUDEDIRS ./tank_sound_mini)
+set(COMPONENT_SRCS
+./tank_sound_mini/board.c
+./tank_sound_mini/board_pins_config.c
+)
+endif()
+if (CONFIG_TRAIN_SOUND_MINI_BOARD)
+message(STATUS "Current board name is " CONFIG_TRAIN_SOUND_MINI_BOARD)
+list(APPEND COMPONENT_ADD_INCLUDEDIRS ./train_sound_mini)
+set(COMPONENT_SRCS
+./train_sound_mini/board.c
+./train_sound_mini/board_pins_config.c
+)
+endif()
 if (CONFIG_ESP32_C3_LYRA_V2_BOARD)
 message(STATUS "Current board name is " CONFIG_ESP32_C3_LYRA_V2_BOARD)
 list(APPEND COMPONENT_ADD_INCLUDEDIRS ./esp32_c3_lyra)

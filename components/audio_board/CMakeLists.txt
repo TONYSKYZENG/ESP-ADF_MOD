@@ -31,7 +31,14 @@ set(COMPONENT_SRCS
 ./lyrat_mini_v1_1/board_pins_config.c
 )
 endif()
-
+if (CONFIG_LYRAT_TOUCH_ESP32)
+message(STATUS "Current board name is " CONFIG_LYRAT_TOUCH_ESP32)
+list(APPEND COMPONENT_ADD_INCLUDEDIRS ./lyrat_touch_esp32)
+set(COMPONENT_SRCS
+./lyrat_touch_esp32/board.c
+./lyrat_touch_esp32/board_pins_config.c
+)
+endif()
 
 if (CONFIG_ESP_LYRATD_MSC_V2_1_BOARD)
 message(STATUS "Current board name is " CONFIG_ESP_LYRATD_MSC_V2_1_BOARD)

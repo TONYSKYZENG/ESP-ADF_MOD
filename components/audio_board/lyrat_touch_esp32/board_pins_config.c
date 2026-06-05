@@ -122,17 +122,17 @@ int8_t get_pa_enable_gpio(void)
 
 int8_t get_input_rec_id(void)
 {
-    return BUTTON_REC_ID;
+    return -1;
 }
 
 int8_t get_input_mode_id(void)
 {
-    return BUTTON_MODE_ID;
+    return -1;
 }
 
 int8_t get_input_set_id(void)
 {
-    return BUTTON_SET_ID;
+    return -1;
 }
 
 int8_t get_input_play_id(void)

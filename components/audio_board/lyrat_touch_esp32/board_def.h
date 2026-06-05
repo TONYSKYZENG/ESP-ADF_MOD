@@ -31,7 +31,7 @@
 #define FUNC_SDCARD_EN            (1)
 #define SDCARD_OPEN_FILE_NUM_MAX  (5)
 #define SDCARD_INTR_GPIO          GPIO_NUM_34
-#define SDCARD_PWR_CTRL           GPIO_NUM_13
+#define SDCARD_PWR_CTRL           (-1)
 
 #define ESP_SD_PIN_CLK            GPIO_NUM_14
 #define ESP_SD_PIN_CMD            GPIO_NUM_15

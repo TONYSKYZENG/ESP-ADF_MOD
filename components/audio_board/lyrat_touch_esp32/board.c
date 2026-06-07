@@ -36,7 +36,7 @@
 
 static const char *TAG = "AUDIO_BOARD";
 static audio_board_handle_t board_handle = 0;
-
+/*
 static int audio_board_probe_adc(uint8_t addr)
 {
     static i2c_bus_handle_t i2c_handle = NULL;
@@ -60,7 +60,7 @@ static int audio_board_probe_adc(uint8_t addr)
         return i2c_bus_probe_addr(i2c_handle, addr);
     }
     return ESP_FAIL;
-}
+}*/
 
 audio_board_handle_t audio_board_init(void)
 {
@@ -71,26 +71,7 @@ audio_board_handle_t audio_board_init(void)
     board_handle = (audio_board_handle_t) audio_calloc(1, sizeof(struct audio_board_handle));
     AUDIO_MEM_CHECK(TAG, board_handle, return NULL);
     board_handle->audio_hal = audio_board_codec_init();
-    board_handle->adc_hal = audio_board_adc_init();
     return board_handle;
-}
-
-audio_hal_handle_t audio_board_adc_init(void)
-{
-    audio_hal_handle_t adc_hal = NULL;
-    audio_hal_codec_config_t audio_codec_cfg = AUDIO_CODEC_DEFAULT_CONFIG();
-    audio_codec_cfg.codec_mode = AUDIO_HAL_CODEC_MODE_ENCODE;
-
-    // The new version of the esp32_lyrat_mini development board has replaced the ADC from ES7243 to ES7243E.
-    // Check the current ADC in use and initialize it.
-    if (audio_board_probe_adc(ES7243E_ADDR) == ESP_OK) {
-        adc_hal = audio_hal_init(&audio_codec_cfg, &AUDIO_CODEC_ES7243E_DEFAULT_HANDLE);
-    } else if (audio_board_probe_adc(ES7243_ADDR) == ESP_OK) {
-        adc_hal = audio_hal_init(&audio_codec_cfg, &AUDIO_CODEC_ES7243_DEFAULT_HANDLE);
-    }
-
-    AUDIO_NULL_CHECK(TAG, adc_hal, return NULL);
-    return adc_hal;
 }
 
 audio_hal_handle_t audio_board_codec_init(void)
